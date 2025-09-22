@@ -22,7 +22,8 @@ const storeEnv = async (req: Request, res: Response) => {
 
 const getEnv = async (req: Request, res: Response) => {
     try {
-        const result = await envService.getEnvService();
+        const search = req.query.search as string;
+        const result = await envService.getEnvService(search);
         res.status(200).json({
             success: true,
             message: "Env fetched successfully",
@@ -37,22 +38,22 @@ const getEnv = async (req: Request, res: Response) => {
     }
 }
 
-const getSingleEnv = async (req: Request, res: Response) => {
-    try {
-        const result = await envService.getSingleEnvService(req.params.id);
-        res.status(200).json({
-            success: true,
-            message: "Env fetched successfully",
-            result
-        })
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Env fetched failed",
-            error
-        })
-    }
-}
+// const getSingleEnv = async (req: Request, res: Response) => {
+//     try {
+//         const result = await envService.getSingleEnvService(req.params.id);
+//         res.status(200).json({
+//             success: true,
+//             message: "Env fetched successfully",
+//             result
+//         })
+//     } catch (error) {
+//         res.status(500).json({
+//             success: false,
+//             message: "Env fetched failed",
+//             error
+//         })
+//     }
+// }
 
 const updateEnv = async (req: Request, res: Response) => {
     try {
@@ -91,7 +92,7 @@ const deleteEnv = async (req: Request, res: Response) => {
 export const envController = {
     storeEnv,
     getEnv,
-    getSingleEnv,
+    // getSingleEnv,
     updateEnv,
     deleteEnv
 }

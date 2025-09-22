@@ -6,15 +6,18 @@ const storeEnvService = async (payload: IEnvString) => {
     return newEnvStore
 }
 
-const getEnvService = async () => {
-    const envs = await Env.find()
+const getEnvService = async (search: string) => {
+    // console.log("search", search);
+    const searchTerm = search || ""
+    const envs = await Env.find({repoName: {$regex: searchTerm, $options: "i"}}) 
+    // console.log("envs", envs);
     return envs
 }
 
-const getSingleEnvService = async (id: string) => {
-    const env = await Env.findById(id)
-    return env
-}
+// const getSingleEnvService = async (id: string) => {
+//     const env = await Env.findById(id)
+//     return env
+// }
 
 const updateEnvService = async (id: string, payload: IEnvString) => {
     const env = await Env.findByIdAndUpdate(id, payload, { new: true })
@@ -29,7 +32,7 @@ const deleteEnvService = async (id: string) => {
 export const envService = {
     storeEnvService,
     getEnvService,
-    getSingleEnvService,
+    // getSingleEnvService,
     updateEnvService,
     deleteEnvService
 }

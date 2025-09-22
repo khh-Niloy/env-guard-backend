@@ -9,7 +9,7 @@ const storeEnv = async (req: Request, res: Response) => {
         res.status(200).json({
             success: true,
             message: "Env stored successfully",
-            result
+            // result
         })
     } catch (error) {
         res.status(500).json({
@@ -27,7 +27,7 @@ const getEnv = async (req: Request, res: Response) => {
         res.status(200).json({
             success: true,
             message: "Env fetched successfully",
-            result
+            // result
         })
     } catch (error) {
         res.status(500).json({
@@ -61,7 +61,7 @@ const updateEnv = async (req: Request, res: Response) => {
         res.status(200).json({
             success: true,
             message: "Env updated successfully",
-            result
+            // result
         })
     } catch (error) {
         res.status(500).json({
@@ -78,7 +78,7 @@ const deleteEnv = async (req: Request, res: Response) => {
         res.status(200).json({
             success: true,
             message: "Env deleted successfully",
-            result
+            // result
         })
     } catch (error) {
         res.status(500).json({
